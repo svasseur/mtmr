@@ -1,0 +1,13 @@
+#!/bin/zsh
+#
+
+# Force using the Apple ifconfig to avoid checking for GNU version.
+OUTPUT=$(/sbin/ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
+echo $OUTPUT
+# If it finds a 172.20.100. IP address, then return code will be 0, otherwise 1.
+#RESULT=$?
+#if [[ $RESULT -ne 0 ]]; then
+#    echo -e "\033[31mVPN\033[m"
+#else
+#    echo -e "\033[30;42mVPN\033[m"
+#fi
